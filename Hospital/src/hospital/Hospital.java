@@ -46,12 +46,12 @@ public class Hospital {
 
         // conexão com o banco, no meu caso, usuario/senha = root/root
         try {
-            hospital.bd.ativarConexao("root", "root");
+            hospital.bd.ativarConexao("root", "");
             throw new Excecoes("001");
         } catch (Exception e) {
             //if(e.getMessage().equals("005")){
-                System.out.println( e.getMessage()+" - Impossivel estabelecer uma conexao com o Banco de Dados");
-           // }
+            System.out.println(e.getMessage() + " - Impossivel estabelecer uma conexao com o Banco de Dados");
+            // }
         }
 
         do {
@@ -106,14 +106,41 @@ public class Hospital {
                         throw new Excecoes("002");
                     } catch (Exception e) {
                         //if(e.getMessage().equals("006")){
-                         System.out.println( e.getMessage()+" - Impossivel realizar a insercao no Banco de Dados");
+                        System.out.println(e.getMessage() + " - Impossivel realizar a insercao no Banco de Dados");
                         //}
                     }
                     System.out.println("PRESSIONE UMA TECLA PARA CONTINUAR");
                 }
+                break;
                 case 2: {
+                    System.out.println("Digite o codigo que deseja alterar");
+                    int codigo_a_consultar = teclado.nextInt();
 
+                    try {
+                        hospital.bd.consultaCodigoNoBanco(codigo_a_consultar);
+
+                    } catch (Exception e) {
+
+                        System.out.println(e.getMessage());
+
+                    }
+                    System.out.println("Digite o campo que deseja alterar");
+                    String campo = teclado.next();
+                    System.out.println("Digite o novo valor para o campo");
+                    String novo_valor = teclado.next();
+
+                    //System.out.println(campo + "\n");
+                    //System.out.println(novo_valor + "\n");
+                    try {
+                        hospital.bd.updateNoBanco(campo, novo_valor, codigo_a_consultar);
+
+                    } catch (Exception e) {
+
+                        System.out.println(e.getMessage());
+
+                    }
                 }
+                break;
                 case 3: {
                     System.out.println("FORNECA O CODIGO DO PACIENTE A SER EXCLUIDO");
                     int deletar = teclado.nextInt();
@@ -123,11 +150,12 @@ public class Hospital {
                         throw new Excecoes("003");
                     } catch (Exception e) {
                         //if(e.getMessage().equals("007")){
-                           System.out.println( e.getMessage()+" - Impossivel realizar a exlcusao do  Banco de Dados");
+                        System.out.println(e.getMessage() + " - Impossivel realizar a exlcusao do  Banco de Dados");
                         //}
                     }
 
                 }
+                break;
                 case 4: {
 
                     System.out.println("DIGITE O CAMPO E EM SEGUIDA O CRITERIO DE BUSCA");
@@ -141,10 +169,11 @@ public class Hospital {
                         throw new Excecoes("004");
                     } catch (Exception e) {
                         //if(e.getMessage().equals("008")){
-                           System.out.println( e.getMessage()+" - Impossivel realizar a consulta ao Banco de Dados");
+                        System.out.println(e.getMessage() + " - Impossivel realizar a consulta ao Banco de Dados");
                         //}
                     }
                 }
+                break;
 
             }
 

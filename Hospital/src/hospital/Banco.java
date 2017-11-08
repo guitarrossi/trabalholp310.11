@@ -8,6 +8,7 @@ package hospital;
 import com.mysql.jdbc.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -29,7 +30,7 @@ public class Banco {
             //throw new Excecoes("001");
         } catch (Exception e) {
             //if (e.getMessage().equals("001")) {
-                //System.out.println(e.getMessage() + " - Impossivel estabelecer uma conexao com o Banco de Dados");
+            //System.out.println(e.getMessage() + " - Impossivel estabelecer uma conexao com o Banco de Dados");
             //}
         }
     }
@@ -56,7 +57,7 @@ public class Banco {
             //throw new Excecoes("002");
         } catch (Exception e) {
             //if (e.getMessage().equals("002")) {
-                //System.out.println(e.getMessage() + " - Impossivel inserir os dados no Banco de Dados");
+            //System.out.println(e.getMessage() + " - Impossivel inserir os dados no Banco de Dados");
             //}
         }
     }
@@ -75,11 +76,11 @@ public class Banco {
                 System.out.println(dado);
             }
             System.out.println("CONSULTA FEITA COM SUCESSO!");
-           // throw new Excecoes("003");
+            // throw new Excecoes("003");
 
         } catch (Exception e) {
             //if (e.getMessage().equals("003")) {
-                //System.out.println(e.getMessage() + " - Falha ao consultar o Banco de Dados");
+            //System.out.println(e.getMessage() + " - Falha ao consultar o Banco de Dados");
             //}
         }
     }
@@ -93,9 +94,54 @@ public class Banco {
             System.out.println("REGISTRO EXCLUIDO COM SUCESSO!");
             //throw new Excecoes("004");
         } catch (Exception e) {
-           // if (e.getMessage().equals("004")) {
-                //System.out.println(e.getMessage() + " - Falha ao realizar a exclusao do registro no Banco de Dados");
+            // if (e.getMessage().equals("004")) {
+            //System.out.println(e.getMessage() + " - Falha ao realizar a exclusao do registro no Banco de Dados");
             //}
         }
+    }
+
+    public void consultaCodigoNoBanco(int codigo) throws Exception {
+        Statement comando = null;
+        String query = "SELECT * FROM pacientes WHERE codigo = " + codigo + " ";
+
+        try {
+            comando = (Statement) conexão.createStatement();
+
+            ResultSet rs = comando.executeQuery(query);
+
+            while (rs.next()) {
+                String nome = rs.getString("nome");
+                String data_nasc = rs.getString("data_nasc");
+                String endereco = rs.getString("endereco");
+                String telefone = rs.getString("telefone");
+                String email = rs.getString("email");
+                String sexo = rs.getString("sexo");
+
+                System.out.println("Nome: " + nome + "\t" + "Data Nascimento:" + data_nasc
+                        + "\t" + "Endereço:" + endereco + "\t" + "Telefone: " + telefone + "\t" + "Email:"
+                        + email + "\t" + "Sexo:" + sexo);
+            }
+            System.out.println("CONSULTA FEITA COM SUCESSO!");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void updateNoBanco(String campo, String novo_valor, int codigo) throws Exception {
+
+        try {
+            PreparedStatement ps = conexão.prepareStatement("UPDATE pacientes SET " + campo + " = ?  WHERE codigo = ?");
+
+            ps.setString(1, novo_valor);
+            ps.setInt(2, codigo);
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
