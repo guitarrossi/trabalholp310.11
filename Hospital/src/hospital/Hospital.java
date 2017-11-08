@@ -47,11 +47,11 @@ public class Hospital {
         // conexão com o banco, no meu caso, usuario/senha = root/root
         try {
             hospital.bd.ativarConexao("root", "root");
-            throw new Excecoes("005");
+            throw new Excecoes("001");
         } catch (Exception e) {
-            if(e.getMessage().equals("005")){
+            //if(e.getMessage().equals("005")){
                 System.out.println( e.getMessage()+" - Impossivel estabelecer uma conexao com o Banco de Dados");
-            }
+           // }
         }
 
         do {
@@ -103,13 +103,13 @@ public class Hospital {
                     try {
                         hospital.bd.inserirNoBanco(codigo, nome, data, endereco, telefone, email, sexo,
                                 deficiente, diabetes, hiv, hepatitec, fumante, alergia, historico);
-                        throw new Excecoes("006");
+                        throw new Excecoes("002");
                     } catch (Exception e) {
-                        if(e.getMessage().equals("006")){
-                          System.out.println( e.getMessage()+" - Impossivel realizar a insercao no Banco de Dados");
-                        }
+                        //if(e.getMessage().equals("006")){
+                         System.out.println( e.getMessage()+" - Impossivel realizar a insercao no Banco de Dados");
+                        //}
                     }
-                    System.out.println("PRESSIONE UMA TECLA PARA CONTINUR");
+                    System.out.println("PRESSIONE UMA TECLA PARA CONTINUAR");
                 }
                 case 2: {
 
@@ -120,11 +120,11 @@ public class Hospital {
 
                     try {
                         hospital.bd.deletarNoBanco(deletar);
-                        throw new Excecoes("007");
+                        throw new Excecoes("003");
                     } catch (Exception e) {
-                        if(e.getMessage().equals("007")){
+                        //if(e.getMessage().equals("007")){
                            System.out.println( e.getMessage()+" - Impossivel realizar a exlcusao do  Banco de Dados");
-                        }
+                        //}
                     }
 
                 }
@@ -138,11 +138,11 @@ public class Hospital {
 
                     try {
                         hospital.bd.consultarNoBanco(campo, criterio);
-                        throw new Excecoes("008");
+                        throw new Excecoes("004");
                     } catch (Exception e) {
-                        if(e.getMessage().equals("008")){
+                        //if(e.getMessage().equals("008")){
                            System.out.println( e.getMessage()+" - Impossivel realizar a consulta ao Banco de Dados");
-                        }
+                        //}
                     }
                 }
 

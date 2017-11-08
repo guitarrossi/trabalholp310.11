@@ -26,11 +26,11 @@ public class Banco {
             Class.forName("com.mysql.jdbc.Driver");
             conexão = DriverManager.getConnection("jdbc:mysql://localhost/hospital", usuario, senha);
             System.out.println("Conexão estabelecida com sucesso!");
-            throw new Excecoes("001");
+            //throw new Excecoes("001");
         } catch (Exception e) {
-            if (e.getMessage().equals("001")) {
-                System.out.println(e.getMessage() + " - Impossivel estabelecer uma conexao com o Banco de Dados");
-            }
+            //if (e.getMessage().equals("001")) {
+                //System.out.println(e.getMessage() + " - Impossivel estabelecer uma conexao com o Banco de Dados");
+            //}
         }
     }
 
@@ -53,11 +53,11 @@ public class Banco {
 
             comando.execute(sql);
             System.out.println("REGISTRO INSERIDO COM SUCESSO!");
-            throw new Excecoes("002");
+            //throw new Excecoes("002");
         } catch (Exception e) {
-            if (e.getMessage().equals("002")) {
-                System.out.println(e.getMessage() + " - Impossivel inserir os dados no Banco de Dados");
-            }
+            //if (e.getMessage().equals("002")) {
+                //System.out.println(e.getMessage() + " - Impossivel inserir os dados no Banco de Dados");
+            //}
         }
     }
 
@@ -75,12 +75,12 @@ public class Banco {
                 System.out.println(dado);
             }
             System.out.println("CONSULTA FEITA COM SUCESSO!");
-            throw new Excecoes("003");
+           // throw new Excecoes("003");
 
         } catch (Exception e) {
-            if (e.getMessage().equals("003")) {
-                System.out.println(e.getMessage() + " - Falha ao consultar o Banco de Dados");
-            }
+            //if (e.getMessage().equals("003")) {
+                //System.out.println(e.getMessage() + " - Falha ao consultar o Banco de Dados");
+            //}
         }
     }
 
@@ -91,11 +91,11 @@ public class Banco {
             sql = "DELETE FROM pacientes WHERE (codigo = " + codigo + ");";
             comando.execute(sql);
             System.out.println("REGISTRO EXCLUIDO COM SUCESSO!");
-            throw new Excecoes("004");
+            //throw new Excecoes("004");
         } catch (Exception e) {
-            if (e.getMessage().equals("004")) {
-                System.out.println(e.getMessage() + " - Falha ao realizar a exclusao do registro no Banco de Dados");
-            }
+           // if (e.getMessage().equals("004")) {
+                //System.out.println(e.getMessage() + " - Falha ao realizar a exclusao do registro no Banco de Dados");
+            //}
         }
     }
 }
