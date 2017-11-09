@@ -47,10 +47,10 @@ public class Hospital {
         // conexão com o banco, no meu caso, usuario/senha = root/root
         try {
             hospital.bd.ativarConexao("root", "");
-            throw new Excecoes("001");
+            //throw new Excecoes("001");
         } catch (Exception e) {
             //if(e.getMessage().equals("005")){
-            System.out.println(e.getMessage() + " - Impossivel estabelecer uma conexao com o Banco de Dados");
+            //System.out.println(e.getMessage() + " - Impossivel estabelecer uma conexao com o Banco de Dados");
             // }
         }
 
