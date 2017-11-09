@@ -29,9 +29,9 @@ public class Banco {
             System.out.println("Conexão estabelecida com sucesso!");
             //throw new Excecoes("001");
         } catch (Exception e) {
-            if (e.getMessage().equals("001")) {
+            // if (e.getMessage().equals("001")) {
             System.out.println("001 - Impossivel estabelecer uma conexao com o Banco de Dados");
-            }
+            //}
         }
     }
 
