@@ -103,10 +103,10 @@ public class Hospital {
                     try {
                         hospital.bd.inserirNoBanco(codigo, nome, data, endereco, telefone, email, sexo,
                                 deficiente, diabetes, hiv, hepatitec, fumante, alergia, historico);
-                        throw new Excecoes("002");
+                        //throw new Excecoes("002");
                     } catch (Exception e) {
                         //if(e.getMessage().equals("006")){
-                        System.out.println(e.getMessage() + " - Impossivel realizar a insercao no Banco de Dados");
+                        //System.out.println(e.getMessage() + " - Impossivel realizar a insercao no Banco de Dados");
                         //}
                     }
                     System.out.println("PRESSIONE UMA TECLA PARA CONTINUAR");
@@ -147,10 +147,10 @@ public class Hospital {
 
                     try {
                         hospital.bd.deletarNoBanco(deletar);
-                        throw new Excecoes("003");
+                        //throw new Excecoes("003");
                     } catch (Exception e) {
                         //if(e.getMessage().equals("007")){
-                        System.out.println(e.getMessage() + " - Impossivel realizar a exlcusao do  Banco de Dados");
+                        //System.out.println(e.getMessage() + " - Impossivel realizar a exlcusao do  Banco de Dados");
                         //}
                     }
 
@@ -166,10 +166,10 @@ public class Hospital {
 
                     try {
                         hospital.bd.consultarNoBanco(campo, criterio);
-                        throw new Excecoes("004");
+                        //throw new Excecoes("004");
                     } catch (Exception e) {
                         //if(e.getMessage().equals("008")){
-                        System.out.println(e.getMessage() + " - Impossivel realizar a consulta ao Banco de Dados");
+                        //System.out.println(e.getMessage() + " - Impossivel realizar a consulta ao Banco de Dados");
                         //}
                     }
                 }
